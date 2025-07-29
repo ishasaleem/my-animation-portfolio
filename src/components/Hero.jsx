@@ -40,16 +40,16 @@ export const Hero = () => {
             variants={fadeInUp}
             whileHover={{ scale: 1.02 }}
           >
-            PedroTech
+            Isha Saleem
           </motion.h1>
           <motion.h2 className="hero-subtitle" variants={fadeInUp}>
             {" "}
-            Creative Developer & Designer
+         Software Engineer| frontend developer
           </motion.h2>
           <motion.p className="hero-description" variants={fadeInUp}>
-            I craft beautiful digital experiences that combine stunning design
-            with powerful functionality. Specializing in modern web applications
-            and interactive user interfaces.
+     A Frontend Developer with a passion for crafting clean, responsive, and user-friendly web interfaces. I specialize in technologies like React.js, JavaScript, HTML, CSS, and modern tools such as Tailwind CSS.
+
+
           </motion.p>
 
           <motion.div className="cta-buttons" variants={staggerContainer}>
@@ -105,11 +105,11 @@ export const Hero = () => {
               style={vscDarkPlus}
             >
               {`const aboutMe: DeveloperProfile = {
-  codename: "PedroTech",
+  codename: "IshaSaleem",
   origin: "🌍 Somewhere between a coffee shop and a terminal",
-  role: "Fullstack Web Sorcerer",
+  role: "Frontend Developer",
   stack: {
-    languages: ["JavaScript", "TypeScript", "SQL"],
+    languages: ["JavaScript", "TypeScript", "Mongodb"],
     frameworks: ["React", "Next.js", "TailwindCSS", "Supabase"],
   },
   traits: [
@@ -120,7 +120,7 @@ export const Hero = () => {
   ],
   missionStatement:
     "Turning ideas into interfaces and bugs into feature",
-  availability: "Available for hire",
+
 };`}
             </SyntaxHighlighter>
           </div>

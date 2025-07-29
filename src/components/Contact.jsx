@@ -2,12 +2,13 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
 
+// Animation variants
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6 },
 };
-
+console.log("Public Key:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 const staggerContainer = {
   animate: {
     transition: {
@@ -20,6 +21,7 @@ export const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    title: "",
     message: "",
   });
 
@@ -49,15 +51,21 @@ export const Contact = () => {
     });
 
     try {
-      await emailjs.send(
+      const result = await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          name: formData.name,
-          email: formData.email,
-          message: formData.message,
-        }
+
+{
+  name: formData.name,
+  email: formData.email,
+  title: formData.title,
+  message: formData.message,
+}
+,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
+
+      console.log("EmailJS Success:", result.text);
 
       setFormStatus({
         submitting: false,
@@ -69,9 +77,12 @@ export const Contact = () => {
       setFormData({
         name: "",
         email: "",
+        title: "",
         message: "",
       });
     } catch (error) {
+      console.error("EmailJS Error:", error);
+
       setFormStatus({
         submitting: false,
         success: false,
@@ -107,6 +118,7 @@ export const Contact = () => {
             placeholder="Your Name..."
             required
             whileFocus={{ scale: 1.02 }}
+            value={formData.name}
             onChange={handleInputChange}
           />
           <motion.input
@@ -115,6 +127,16 @@ export const Contact = () => {
             placeholder="Your Email..."
             required
             whileFocus={{ scale: 1.02 }}
+            value={formData.email}
+            onChange={handleInputChange}
+          />
+          <motion.input
+            type="text"
+            name="title"
+            placeholder="Subject..."
+            required
+            whileFocus={{ scale: 1.02 }}
+            value={formData.title}
             onChange={handleInputChange}
           />
           <motion.textarea
@@ -122,6 +144,7 @@ export const Contact = () => {
             placeholder="Your Message..."
             required
             whileFocus={{ scale: 1.02 }}
+            value={formData.message}
             onChange={handleInputChange}
           />
 
@@ -139,7 +162,7 @@ export const Contact = () => {
             <motion.div
               className={`form-status ${
                 formStatus.success ? "success" : "error"
-              } `}
+              }`}
             >
               {formStatus.message}
             </motion.div>
