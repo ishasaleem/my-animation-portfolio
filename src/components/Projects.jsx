@@ -94,6 +94,22 @@ export const Projects = () => {
             <span>CSS</span>
           </div>
         </motion.div>
+           <motion.div className="project-card" variants={fadeInUp} whileHover={{ y: -10 }}>
+          <motion.div
+            className="project-image"
+            style={{ backgroundImage: "url('/projects/5.PNG')" }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          />
+          <h3>🚀 AI Chatbot with Multi-Source Fallback</h3>
+          <p>
+       🤖 AI Chatbot with Fallbacks & Manual Feedback – Developed a chatbot in React & Node.js with OpenAI + Hugging Face integration. Added manual default responses and a feedback-friendly UI, ensuring continuous interaction even if APIs fail.</p>  <div className="project-tech">
+            <span>React</span>
+            <span>CSS</span>
+            <span>Typescript</span>
+            
+          </div>
+        </motion.div>
       </motion.div>
     </motion.section>
   );
